@@ -27,7 +27,6 @@
 #define KC_RST RESET
 
 bool capslk_status = false;
-bool numlk_status = true;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
