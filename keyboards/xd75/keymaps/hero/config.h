@@ -16,6 +16,7 @@
 
 #ifndef CONFIG_USER_H
 #define CONFIG_USER_H
+#undef RGBLIGHT_ANIMATIONS
 
 #include "../../config.h"
 
