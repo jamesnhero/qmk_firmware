@@ -27,6 +27,7 @@
 #define KC_RST RESET
 
 bool capslk_status = false;
+bool numlk_status = false;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -97,41 +98,63 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  }
 };
 
-void setcaps_light(void){
-    if (capslk_status == false) {
-        rgblight_disable();
+void setlight_green(void){
+    rgblight_enable();
+    rgblight_setrgb(141, 182, 0);
+};
+
+void setlight_blue(void){
+    rgblight_enable();
+    rgblight_setrgb(49, 140, 231);
+};
+
+void setlight_off(void){
+    rgblight_disable();
+};
+
+void setlight_caps(void){
+    if (capslk_status == true){
+        setlight_green();
     }
     else {
-        rgblight_enable();
-        rgblight_setrgb(141, 182, 0);
+        setlight_off();
+    }
+};
+
+void setlight_num(void){
+    if (numlk_status == true){
+        setlight_blue();
+    }
+    else{
+        setlight_off();
+    }
+};
+
+void led_set_user(uint8_t usb_led) {
+
+    if (usb_led & (1<<USB_LED_CAPS_LOCK)) {
+        capslk_status = true;
+    } else {
+        capslk_status = false;
+    }
+
+    if (usb_led & (1<<USB_LED_NUM_LOCK)) {
+        numlk_status = true;
+    } else {
+        numlk_status = false;
+    }
+
+    switch (layer_state){
+        /* if on numpad layer, show status of numlock */
+        case (1<<_NP):
+            setlight_num();
+            break;
+        /* if on function layer, switch off lights */
+        case (1<<_FN):
+            setlight_off();
+            break;
+        /* otherwise show status of capslock */
+        default:
+            setlight_caps();
     }
 }
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch(keycode) {
-        case KC_CAPS:
-            if (record->event.pressed) {
-                capslk_status = !capslk_status;
-                setcaps_light();
-            }
-            return true; break; /* return true so that CAPS_KEY is processed */
-
-        case MO(_FN):
-            /* same as num pad */
-        case MO(_NP):
-            if (record->event.pressed) {
-                rgblight_disable();
-            }
-            else {
-                setcaps_light();
-            }
-            return true; break;
-    }
-    return true;
-};
-
-void matrix_init_user(void){
-  /* start with LEDs switched off */
-  rgblight_enable();
-  rgblight_disable();
-};
