@@ -33,23 +33,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* DVORAK
  * .--------------------------------------------------------------------------------------------------------------------------------------.
- * | ESC    | 1      | 2      | 3      | 4      | 5      | `      | [      | ]      | 6      | 7      | 8      | 9      | 0      | BACKSP |
+ * | ESC    | 1      | 2      | 3      | 4      | 5      | [      | -      | ]      | 6      | 7      | 8      | 9      | 0      | BACKSP |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+-----------------|
  * | TAB    | '      | ,      | .      | P      | Y      | /      | +      | \      | F      | G      | C      | R      | L      | DEL    |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+-----------------+--------|
- * | CAP LK | A      | O      | E      | U      | I      | HOME   | INS    | PG UP  | D      | H      | T      | N      | A      | -      |
+ * | CAP LK | A      | O      | E      | U      | I      | HOME   | INS    | PG UP  | D      | H      | T      | N      | A      | ENTER  |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------------------------+--------|
- * | LSHIFT | ;      | Q      | J      | K      | X      | END    | UP     | PG DN  | B      | M      | W      | V      | Z      | ENTER  |
+ * | LSHIFT | ;      | Q      | J      | K      | X      | END    | UP     | PG DN  | B      | M      | W      | V      | Z      | `      |
  * |--------+--------+--------+--------+--------+-----------------+--------+--------+--------+--------+-----------------+--------+--------|
  * | NUMPAD | LCTRL  | LALT   | SUPER  | SPACE  | SPACE  | LEFT   | DOWN   | RIGHT  | SPACE  | SPACE  | MENU   | SUPER  | RALT   | FN     |
  * '--------------------------------------------------------------------------------------------------------------------------------------'
  */
 
  [_DV] = { /* DVORAK */
-  { KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_GRV,  KC_LBRC, KC_RBRC, KC_6,    KC_7,   KC_8,    KC_9,    KC_0,    KC_BSPC },
+  { KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_LBRC, KC_MINS, KC_RBRC, KC_6,    KC_7,   KC_8,    KC_9,    KC_0,    KC_BSPC },
   { KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_SLSH, KC_EQL,  KC_BSLS, KC_F,    KC_G,   KC_C,    KC_R,    KC_L,    KC_DEL  },
-  { KC_CAPS, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_HOME, KC_INS,  KC_PGUP, KC_D,    KC_H,   KC_T,    KC_N,    KC_S,    KC_MINS },
-  { KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_END,  KC_UP,   KC_PGDN, KC_B,    KC_M,   KC_W,    KC_V,    KC_Z,    KC_ENT  },
+  { KC_CAPS, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_HOME, KC_INS,  KC_PGUP, KC_D,    KC_H,   KC_T,    KC_N,    KC_S,    KC_ENT },
+  { KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_END,  KC_UP,   KC_PGDN, KC_B,    KC_M,   KC_W,    KC_V,    KC_Z,    KC_GRV  },
   { MO(_NP), KC_LCTL, KC_LALT, KC_LGUI, KC_SPC,  KC_SPC,  KC_LEFT, KC_DOWN, KC_RGHT, KC_SPC,  KC_SPC, KC_MENU, KC_RGUI, KC_LALT, MO(_FN) },
  },
 
