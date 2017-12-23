@@ -17,6 +17,7 @@
 #ifndef CONFIG_USER_H
 #define CONFIG_USER_H
 #undef RGBLIGHT_ANIMATIONS
+#define FORCE_NKRO
 
 #include "../../config.h"
 
