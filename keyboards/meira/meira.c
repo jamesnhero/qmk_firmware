@@ -20,30 +20,12 @@
 #include "quantum.h"
 #define BACKLIGHT_BREATHING
 
-#ifdef AUDIO_ENABLE
-    float tone_startup[][2] = SONG(STARTUP_SOUND);
-    float tone_goodbye[][2] = SONG(GOODBYE_SOUND);
-#endif
-
-
-void shutdown_user(void) {
-    #ifdef AUDIO_ENABLE
-        PLAY_NOTE_ARRAY(tone_goodbye, false, 0);
-    _delay_ms(150);
-    stop_all_notes();
-    #endif
-}
-
+extern void backlight_set(uint8_t level);
 
 void matrix_init_kb(void)
 {
     debug_enable=true;
     print("meira matrix_init_kb\n");
-#ifdef AUDIO_ENABLE
-    _delay_ms(20); // gets rid of tick
-    PLAY_NOTE_ARRAY(tone_startup, false, 0);
-#endif
-
 
 #ifdef ISSI_ENABLE
     issi_init();
@@ -54,7 +36,6 @@ void matrix_init_kb(void)
     // we should get a flashing red light
     wdt_enable(WDTO_500MS);
 #endif
-
 
     // put your keyboard start-up code here
     // runs once when the firmware starts up
