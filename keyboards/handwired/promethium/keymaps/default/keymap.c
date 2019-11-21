@@ -84,7 +84,6 @@ enum glow_modes {
 uint8_t glow_mode = GLOW_MIN;
 
 void turn_off_capslock(void);
-extern keymap_config_t keymap_config;
 
 // layers, ordering is important!
 enum layers {
@@ -1277,7 +1276,7 @@ void set_output_user(uint8_t output) {
 }
 
 void matrix_init_user() {
-  _delay_ms(500); // give time for usb to initialize
+  wait_ms(500); // give time for usb to initialize
 
   set_unicode_input_mode(UC_LNX);
 
